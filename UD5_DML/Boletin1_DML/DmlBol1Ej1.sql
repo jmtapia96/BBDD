@@ -110,7 +110,7 @@ UPDATE PROFESORES SET gana = gana * 1.20 WHERE titulo LIKE '%informática';
 UPDATE CURSOS SET dni_profesor= '1234567' WHERE dni_profesor='32432455';
 
 --15.- Modifica el dni de todos los profesores de informática para que tengan el dni 7654321
-UPDATE PROFESORES SET DNI='1234567' WHERE TITULO='Informática';
+UPDATE PROFESORES SET DNI='1234567' WHERE TITULO LIKE '%Informática';
 
 --16.- Cambia el sexo de la alumna María Jaén a F.
 UPDATE ALUMNOS SET SEXO='F' WHERE DNI='789678';
