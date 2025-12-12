@@ -72,14 +72,14 @@ INSERT INTO ALUMNOS (nombre,apellido1,apellido2,dni,direccion,sexo,fecha_nacimie
 --El insert falla por el chk de sexo, que debe ser H o M
 
 --4. Insertar las siguientes tupla en la tabla profesores:
-INSERT INTO PROFESORES (nombre,apellido1,apellido2,dni,direccion,titulo,gana)  VALUES('Juan','Arch','López','32432455','Puerta Negra,4','Ing. Informática',NULL)
+INSERT INTO PROFESORES (nombre,apellido1,apellido2,dni,direccion,titulo,gana)  VALUES('Juan','Arch','López','32432455','Puerta Negra,4','Ing. Informática',NULL);
 --El insert falla proque el profesor ya existe
 
 --5. Insertar la siguiente tupla en la tabla estudiante
-INSERT INTO ALUMNOS (nombre,apellido1,apellido2,dni,direccion,sexo,fecha_nacimiento) VALUES('María','Jaén','Sevilla',789678,'Martos, 5 ','M',NULL)
+INSERT INTO ALUMNOS (nombre,apellido1,apellido2,dni,direccion,sexo,fecha_nacimiento) VALUES('María','Jaén','Sevilla',789678,'Martos, 5 ','M',NULL);
 
 --6.- La fecha de nacimiento de Antonia López está equivocada. La verdadera es 23 de diciembre de 1976.
-UPDATE ALUMNOS SET fecha_nacimiento=TO_DATE('1976-12-23','YYYY-MM-DD') WHERE nombre='María'
+UPDATE ALUMNOS SET fecha_nacimiento=TO_DATE('1976-12-23','YYYY-MM-DD') WHERE nombre='María';
 
 --7.- Cambiar a Antonia López al curso de código 5.
 UPDATE ALUMNOS SET curso='5' WHERE nombre='María';
@@ -98,7 +98,7 @@ DELETE FROM CURSOS WHERE cod_curso='1';
 ALTER TABLE CURSOS ADD numero_alumnos NUMBER(10);
 
 --11.Modificar la fecha de nacimiento a 01/01/2012 en aquellos alumnos que no tengan fecha de nacimiento.
-ALTER TABLE ALUMNOS SET fecha_nacimiento=TO_DATE('2012-01-01','YYYY-MM-DD') WHERE fecha_nacimiento=NULL;
+UPDATE ALUMNOS SET fecha_nacimiento=TO_DATE('2012-01-01','YYYY-MM-DD') WHERE fecha_nacimiento=NULL;
 
 --12.- Borra el campo sexo en la tabla de alumnos.
 ALTER TABLE ALUMNOS DROP COLUMN SEXO;
@@ -110,7 +110,7 @@ UPDATE PROFESORES SET gana = gana * 1.20 WHERE titulo LIKE '%informática';
 UPDATE CURSOS SET dni_profesor= '1234567' WHERE dni_profesor='32432455';
 
 --15.- Modifica el dni de todos los profesores de informática para que tengan el dni 7654321
-UPDATE PROFESORES SET DNI='1234567' WHERE TITULO='Informática'
+UPDATE PROFESORES SET DNI='1234567' WHERE TITULO='Informática';
 
 --16.- Cambia el sexo de la alumna María Jaén a F.
 UPDATE ALUMNOS SET SEXO='F' WHERE DNI='789678';
