@@ -82,10 +82,39 @@ INSERT INTO ALUMNOS (nombre,apellido1,apellido2,dni,direccion,sexo,fecha_nacimie
 UPDATE ALUMNOS SET fecha_nacimiento=TO_DATE('1976-12-23','YYYY-MM-DD') WHERE nombre='María'
 
 --7.- Cambiar a Antonia López al curso de código 5.
-UPDATE ALUMNOS SET curso='5' WHERE nombre='María'
+UPDATE ALUMNOS SET curso='5' WHERE nombre='María';
+--El insert no funciona porque el dato curso no hay 5 y salta la fk1_curso
+
 
 --8.- Eliminar la profesora Laura Jiménez
-DELETE FROM PROFESORES WHERE nombre='Laura',apellido1='Jiménez'
+DELETE FROM PROFESORES WHERE dni='';
+--El DELETE falla porque no existe esa profesora, se debe añadir previamente
+
+--9. Borrar el curso con codigo 1.
+DELETE FROM CURSOS WHERE cod_curso='1';
+
+
+--10. Añadir un campo llamado numero_alumnos en la tabla curso
+ALTER TABLE CURSOS ADD numero_alumnos NUMBER(10);
+
+--11.Modificar la fecha de nacimiento a 01/01/2012 en aquellos alumnos que no tengan fecha de nacimiento.
+ALTER TABLE ALUMNOS SET fecha_nacimiento=TO_DATE('2012-01-01','YYYY-MM-DD') WHERE fecha_nacimiento=NULL;
+
+--12.- Borra el campo sexo en la tabla de alumnos.
+ALTER TABLE ALUMNOS DROP COLUMN SEXO;
+
+--13.- Modificar la tabla profesores para que los profesores de Informática cobren un 20 pro ciento más de lo que cobran actualmente.
+UPDATE PROFESORES SET gana = gana * 1.20 WHERE titulo LIKE '%informática';
+
+--14.- Modifica el dni de Juan Arch a 1234567
+UPDATE CURSOS SET dni_profesor= '1234567' WHERE dni_profesor='32432455';
+
+--15.- Modifica el dni de todos los profesores de informática para que tengan el dni 7654321
+UPDATE PROFESORES SET DNI='1234567' WHERE TITULO='Informática'
+
+--16.- Cambia el sexo de la alumna María Jaén a F.
+UPDATE ALUMNOS SET SEXO='F' WHERE DNI='789678';
+
 
 SELECT * FROM ALUMNOS;
 SELECT * FROM CURSOS;
